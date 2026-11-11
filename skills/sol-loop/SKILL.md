@@ -8,8 +8,9 @@ description: Use when the user says "sol loop".
 Have an outside model review your change in a loop, before or after filing a
 PR. Make the smallest changes that satisfy it, and push back on scope creep.
 
-`~/.claude/CLAUDE.md` names the reviewers and their CLI commands. The repo's
-`AGENTS.md` sets round limits, review guidelines, labels and merge rules. If
+The reviewer is Codex `gpt-6.1-sol` at reasoning effort `high`. The fallback
+is Grok `grok-4.7` at `high`. Set both every round. Codex defaults to `low`.
+The repo's `AGENTS.md` sets round limits, review guidelines, labels and merge rules. If
 it doesn't set a round limit, use 3, or 5 while a blocker is open on
 security, auth, data loss or concurrency.
 
@@ -30,9 +31,22 @@ security, auth, data loss or concurrency.
 1. Run `~/.claude/skills/sol-loop/codex-limits.sh`. Use Codex unless it
    prints `BLOCKED`, then Grok. Once a loop is on Grok, it stays on Grok.
 2. In T3, start the review with `delegate_task` (`role: "review"`,
-   `mode: "async"`, effort in `target.options`, a new `clientRequestId` each
-   round). Outside T3, run the CLAUDE.md command in the background. Every
-   round is a fresh run with the full brief and the ledger.
+   `mode: "async"`, a new `clientRequestId` each round) and this `target`:
+
+   - Codex: `{providerInstanceId: "codex", model: "gpt-6.1-sol", options: {reasoningEffort: "high"}}`
+   - Grok: `{providerInstanceId: "grok", model: "grok-4.7", options: {reasoningEffort: "high"}}`
+
+   Outside T3, run the matching command in the background, wait for it to
+   exit, then read `<reply-file>`:
+
+   ```
+   codex exec -s read-only -m gpt-6.1-sol -c model_reasoning_effort="high" \
+     --ephemeral -C <repo> -o <reply-file> "<brief>"
+   grok -p "<brief>" -m grok-4.7 --effort high --sandbox read-only \
+     --always-approve --no-subagents --cwd <repo> > <reply-file>
+   ```
+
+   Every round is a fresh run with the full brief and the ledger.
 3. Wait for the notice or the exit. Don't edit scoped files until then.
 4. If the reviewer hits a usage limit (`429`, or a usage, rate or quota
    error), rerun the round on Grok. If Grok is out too, see "No reviewer" in
