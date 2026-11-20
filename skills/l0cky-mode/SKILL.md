@@ -116,7 +116,8 @@ include Kelper, Hubble and hermes.
   shared or production service.
 - Prove behavior against the real system, not a stub or fake server. If
   you can't reach the real one, mark the result unverified and say why.
-- Fix a bug only after you reproduce it. For a refactor, pin the current
+- Fix a bug only after you reproduce it, following
+  [playbooks/bug-fix.md](playbooks/bug-fix.md). For a refactor, pin the current
   behavior with tests first and show they still pass after.
 - A PR with a visible change shows before and after screenshots, with
   "before" taken from the PR's base. Add a video for a flow when the user
