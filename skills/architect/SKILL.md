@@ -2,8 +2,8 @@
 name: architect
 description: >-
   Sketch the shape of a change (types, signatures, modules) before any code,
-  let the user pick from labelled options, then keep the build true to the
-  pick. Use for /architect, "architect this", "design this", or non-trivial
+  let the user pick from labelled options, then keep the build matching
+  the pick. Use for /architect, "architect this", "design this", or non-trivial
   work where jumping to code would lock in the wrong shape.
 ---
 
