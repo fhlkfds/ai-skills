@@ -1,9 +1,10 @@
 ---
 name: arena
 description: >-
-  Use for /arena, "arena this", or when one attempt at a non-trivial build
-  could lock in the wrong shape. Races Claude, Codex and Grok and keeps the
-  best.
+  Race Claude, Codex and Grok on the same task, pick a base, and graft the
+  best parts of the others into it. Use for /arena, "arena this", "throw it
+  in the arena", or when one attempt at a non-trivial build would lock in
+  the wrong shape.
 ---
 
 # Arena
