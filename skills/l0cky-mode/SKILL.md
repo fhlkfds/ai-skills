@@ -139,8 +139,8 @@ include Kelper, Hubble and hermes.
 ## Process
 
 - Builds end in a PR unless the user says otherwise. Open it with
-  [playbooks/opening-a-pr.md](playbooks/opening-a-pr.md). Babysit one only
-  when asked, with [playbooks/babysit.md](playbooks/babysit.md).
+  [playbooks/opening-a-pr.md](playbooks/opening-a-pr.md). Run the `babysit`
+  skill when asked, or after you open more than one PR.
 - For other kinds of work (feature, refactor, perf, investigation and
   more), use the matching file in [playbooks/](playbooks/README.md).
 - Put rules that should apply on every machine in the fleet repo's
