@@ -14,6 +14,9 @@ disable-model-invocation: true
 apply. They set reviewers, PR watching and merge limits. This skill covers
 how the user likes the work done.
 
+On Codex, map the Claude tool and model names in this skill and its
+playbooks with [references/codex-tools.md](references/codex-tools.md).
+
 ## Reading the user
 
 - The user dictates and types fast. Expect typos and sound-alike words:
