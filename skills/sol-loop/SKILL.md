@@ -39,22 +39,6 @@ security, auth, data loss or concurrency.
    fallback below. Retry any other error once, then follow the repo's rule
    for a review that can't run. A failed review is not approval.
 
-### Claude fallback
-
-When Codex and Grok are both out, a Claude model one step stronger than the
-one that wrote most of the change reviews it:
-
-- Opus wrote it: Fable reviews.
-- Sonnet or Haiku wrote it: Opus reviews.
-- Fable wrote it: no stronger Claude model exists. Wait until Codex or Grok
-  has usage again (`codex-limits.sh` prints when Codex is back), then run
-  the round there.
-
-In T3, use `delegate_task` with provider `claude`. Outside T3, run
-`claude -p --model <fable|opus> --permission-mode plan "<round brief>" >
-<reply-file>` in the background. Once a loop is on Claude, it stays on
-Claude.
-
 Round 1 brief:
 
 ```
@@ -72,6 +56,22 @@ S1 [blocker|should|nit] <file>:<line> <claim>. Fix: <suggestion> (stable ids)
 Later rounds send the same brief plus the ledger and the change since the
 last round. Ask only about open ids and changed code, each marked `resolved`
 or `still open: <reason>`.
+
+### Claude fallback
+
+When Codex and Grok are both out, a Claude model one step stronger than the
+one that wrote most of the change reviews it:
+
+- Opus wrote it: Fable reviews.
+- Sonnet or Haiku wrote it: Opus reviews.
+- Fable wrote it: no stronger Claude model exists. Wait until Codex or Grok
+  has usage again (`codex-limits.sh` prints when Codex is back), then run
+  the round there.
+
+In T3, use `delegate_task` with provider `claude`. Outside T3, run
+`claude -p --model <fable|opus> --permission-mode plan "<round brief>" >
+<reply-file>` in the background. Once a loop is on Claude, it stays on
+Claude.
 
 ## 3. Answer findings
 
@@ -110,6 +110,6 @@ Push only if the user asked. Add this line to the PR description:
 
 `Reviewed with sol-loop: <N> rounds with <model(s)>. Sol verdict: approved`
 
-If Grok or Claude reviewed, name the model and say why. Report the rounds, reviewers, fixes,
-declined findings with reasons, diff size before and after, and whether you
-pushed.
+If Grok or Claude reviewed, name the model and say why. Report the rounds,
+reviewers, fixes, declined findings with reasons, diff size before and
+after, and whether you pushed.
