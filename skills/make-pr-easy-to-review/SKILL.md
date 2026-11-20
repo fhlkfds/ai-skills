@@ -3,9 +3,9 @@ name: make-pr-easy-to-review
 description: Prepare PRs for review by cleaning noisy history, improving PR descriptions, and adding reviewer guidance without changing code behavior. Use for "make this easy to review", "tidy this PR", "clean up commits", or "annotate the diff".
 ---
 
-# Make PR Easy to Review
+# Make a PR easy to review
 
-Prepare a PR so a reviewer can quickly understand the intent, important files, and risk. The default goal is reviewability without behavior changes.
+Prepare a PR so a reviewer sees the intent, the important files and the risk on a first read. By default, don't change what the code does.
 
 ## Workflow
 
@@ -15,7 +15,7 @@ Prepare a PR so a reviewer can quickly understand the intent, important files, a
 4. Propose a plan before rewriting history or force-pushing.
 5. Apply safe improvements, then verify the tree or diff still matches the intended code.
 
-## History Cleanup
+## History cleanup
 
 Only rewrite history when the user asks for it or agrees to the plan. Before rewriting:
 
@@ -30,7 +30,7 @@ Good commit groupings usually follow dependency order:
 1. Schema/storage or generated API definitions.
 2. Core logic.
 3. Wiring and integration.
-4. UI or surface behavior.
+4. UI or user-facing behavior.
 5. Tests.
 
 After rewriting, verify content identity:
@@ -43,9 +43,9 @@ git diff origin/<headRefName> --stat
 
 Do not push if the tree changed unintentionally.
 
-## Reviewer Guidance
+## Reviewer guidance
 
-When code behavior should stay untouched, prefer PR description and review notes:
+When the code should stay as it is, use the PR description and review notes:
 
 - Add a TL;DR that matches the actual diff.
 - Separate core files from generated or mechanical files.
@@ -56,4 +56,4 @@ When code behavior should stay untouched, prefer PR description and review notes
 
 - Never hide meaningful behavior changes inside "cleanup".
 - Do not bypass hooks unless the user explicitly asks.
-- If the PR is too large to make reviewable with notes, recommend splitting instead of polishing around the problem.
+- If the PR is too large to make reviewable with notes, recommend splitting it instead.
