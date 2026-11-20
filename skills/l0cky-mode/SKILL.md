@@ -136,7 +136,8 @@ include Kelper, Hubble and hermes.
 ## Process
 
 - Builds end in a PR unless the user says otherwise. Open it with
-  [playbooks/opening-a-pr.md](playbooks/opening-a-pr.md).
+  [playbooks/opening-a-pr.md](playbooks/opening-a-pr.md). Babysit one only
+  when asked, with [playbooks/babysit.md](playbooks/babysit.md).
 - Put rules that should apply on every machine in the fleet repo's
   `rules/AGENTS.md`, not in one repo's `AGENTS.md`.
 - Set up skills and tools for Claude, Codex and Grok together. The user

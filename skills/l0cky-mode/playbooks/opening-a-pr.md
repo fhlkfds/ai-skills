@@ -11,7 +11,7 @@
    `origin pr create --status open` when Origin's CLI resolves the
    repository.
 
-Opening a PR doesn't start a babysit.
+Opening a PR doesn't start a [babysit](babysit.md).
 
 ## PR template
 
