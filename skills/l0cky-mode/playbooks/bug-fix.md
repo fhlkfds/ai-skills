@@ -4,16 +4,15 @@ You own this task. Plan, review, verify. Delegate investigation and the fix
 to subagents, and stay in the lead. Pick each subagent's reasoning level for
 its job: higher for hard or subtle work, lower for routine work.
 
-Be scientific. Every shipped line traces to runtime evidence. A
-belt-and-suspenders change that "might help" is a hypothesis, not a fix, and
-it doesn't ship. When evidence refutes a hypothesis, revert what it
-motivated. Ship the smallest change the evidence justifies, nothing more.
+Be scientific. Every shipped line traces to runtime evidence. An extra
+change that "might help" is a guess, not a fix, and it doesn't ship. When
+evidence refutes a hypothesis, revert what it motivated. Ship the smallest change the evidence justifies, nothing more.
 
-1. **Reproduce it yourself** on the matching surface through the project's
-   control skill, even when a debug or instrumentation protocol says to ask
-   the user to reproduce. Ask the user only after driving the surface as
-   far as it goes, and give the specific reason it can't reach the target.
-   If the bug won't reproduce directly, synthesize the trigger, tighten the
+1. **Reproduce it yourself** where the bug shows up (the app, CLI or
+   browser), through the project's control skill, even when a debug or
+   instrumentation protocol says to ask the user to reproduce. Ask the user
+   only after driving it as far as it goes, and give the specific reason it
+   can't reach the target. If the bug won't reproduce directly, synthesize the trigger, tighten the
    conditions, or instrument until it fires.
 2. **Binary-search the cause.** Form the candidate hypotheses, then rule
    them out until one survives. Seed them with a trace of the affected
@@ -26,9 +25,10 @@ motivated. Ship the smallest change the evidence justifies, nothing more.
    `interrogate` fan-out.
 3. **Plan the fix.** If it crosses a function boundary, run `architect`
    first. Delegate the implementation, with a specific scope, to a subagent
-   on the bug-fix model: Opus 5.5 on xhigh unless the task names another.
-4. **Verify on the same surface.** The original repro now passes.
-   "Inconclusive" or a result from the wrong surface is not a pass, so flag
+   on the bug-fix model: the newest Claude Opus on xhigh, unless the task
+   names another.
+4. **Verify in the same place.** The original repro now passes.
+   "Inconclusive" or a result from somewhere else is not a pass, so flag
    it. Unit tests show branch behavior, not that the bug is gone.
 5. **Stage the commits** so the failing repro lands before the fix in git
    history. This is the `sequence-verifiable-units` principle: the failing
