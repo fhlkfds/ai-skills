@@ -20,8 +20,7 @@ No code until the user picks a shape.
    workaround keeps showing up, redesign instead of patching.
 3. Draw each shape side by side (boxes for modules, arrows for calls, the
    data owner marked). Show it the best way the program allows:
-   - a tool that shows HTML in the chat (T3 Code: `html_preview` then
-     `html_render`; Claude.ai and Claude Code: an artifact)
+   - a tool that shows HTML in the chat
    - otherwise a self-contained HTML file in `/tmp`, opened with
      `xdg-open` (Linux) or `open` (macOS), with its path in the reply
    - with no display, a text diagram in the reply
