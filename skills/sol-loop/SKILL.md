@@ -26,7 +26,7 @@ codex exec -s read-only -m gpt-6.1-sol -c model_reasoning_effort="high" \
   --ephemeral -C <repo> -o <reply> "<brief>"
 grok -p "<brief>" -m grok-4.7 --effort high --sandbox read-only \
   --always-approve --no-subagents --cwd <repo> > <reply>
-claude -p "<brief>" --model <fable|opus> --permission-mode plan > <reply>
+cd <repo> && claude -p "<brief>" --model <fable|opus> --permission-mode plan > <reply>
 ```
 
 A timeout, error or empty reply is not approval.
