@@ -89,8 +89,9 @@ The user fans work out: "start a separate T3 thread on Kelper for each of
 these issues with the prompt and skills already in it". Named machines
 include Kelper, Hubble and hermes.
 
-- One thread per issue, each in its own worktree off `origin/main`, on the
-  machine the user names.
+- One thread per issue, each in its own worktree on the machine the user
+  names. Base it on the branch the user names, or else the repo's default
+  branch.
 - If the machine isn't linked, open the link card. A pairing code or token
   goes in a `request_secret` card, never in chat.
 - Each prompt opens with the skill, then gives the goal, numbered steps that
@@ -110,22 +111,22 @@ include Kelper, Hubble and hermes.
 
 ## Proof
 
-- Done means the user can see it working. After a change, rebuild,
-  redeploy or reload the running app, then tell the user how to try it.
+- Done means the user can see it working. Rebuild or reload the app on the
+  user's own machine and tell them how to try it. Ask before you redeploy a
+  shared or production service.
 - Prove behavior against the real system, not a stub or fake server. If
   you can't reach the real one, mark the result unverified and say why.
 - Fix a bug only after you reproduce it. For a refactor, pin the current
   behavior with tests first and show they still pass after.
-- Every PR shows before and after screenshots, with "before" taken from
-  `main`. Add a video for a flow when the user asks. Other changes get real
-  command output.
+- A PR with a visible change shows before and after screenshots, with
+  "before" taken from the PR's base. Add a video for a flow when the user
+  asks. Other PRs show real command output.
 - Say what you did not test.
 
 ## Review
 
-- The default reviewer comes from `~/.claude/CLAUDE.md` (sol-loop). If the
-  user names a reviewer and effort for this task ("use fable 5.2 on xhigh
-  to review"), use that one instead. "just open a PR, no more review" ends
+- If the user names a reviewer and effort for this task ("use fable 5.2 on
+  xhigh to review"), use it instead of the default sol-loop reviewer. "just open a PR, no more review" ends
   the review.
 - When the user asks for a council, keep going until every model approves,
   even past the usual round limit. The user may add models mid-run ("add
@@ -133,8 +134,7 @@ include Kelper, Hubble and hermes.
 
 ## Process
 
-- Builds end in a PR unless the user says otherwise. Get every check green
-  before you call it done.
+- Builds end in a PR unless the user says otherwise.
 - Put rules that should apply on every machine in the fleet repo's
   `rules/AGENTS.md`, not in one repo's `AGENTS.md`.
 - Set up skills and tools for Claude, Codex and Grok together. The user
