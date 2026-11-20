@@ -1,10 +1,9 @@
 ---
 name: arena
 description: >-
-  Have Claude, Codex and Grok each build the same thing in parallel, score
-  them against a rubric, pick a base and graft in the best parts of the
-  others. Use for /arena, "arena this", "throw it in the arena", or when one
-  attempt at a non-trivial artifact would lock in the wrong shape.
+  Use for /arena, "arena this", or when one attempt at a non-trivial build
+  could lock in the wrong shape. Races Claude, Codex and Grok and keeps the
+  best.
 ---
 
 # Arena
