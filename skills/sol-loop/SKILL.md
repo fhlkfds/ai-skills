@@ -35,9 +35,25 @@ security, auth, data loss or concurrency.
    round is a fresh run with the full brief and the ledger.
 3. Wait for the notice or the exit. Don't edit scoped files until then.
 4. If the reviewer hits a usage limit (`429`, or a usage, rate or quota
-   error), rerun the round on Grok. If Grok is out too, see "No reviewer" in
-   section 4. Retry any other error once, then follow the repo's rule for a
-   review that can't run. A failed review is not approval.
+   error), rerun the round on Grok. If Grok is out too, use the Claude
+   fallback below. Retry any other error once, then follow the repo's rule
+   for a review that can't run. A failed review is not approval.
+
+### Claude fallback
+
+When Codex and Grok are both out, a Claude model one step stronger than the
+one that wrote most of the change reviews it:
+
+- Opus wrote it: Fable reviews.
+- Sonnet or Haiku wrote it: Opus reviews.
+- Fable wrote it: no stronger Claude model exists. Wait until Codex or Grok
+  has usage again (`codex-limits.sh` prints when Codex is back), then run
+  the round there.
+
+In T3, use `delegate_task` with provider `claude`. Outside T3, run
+`claude -p --model <fable|opus> --permission-mode plan "<round brief>" >
+<reply-file>` in the background. Once a loop is on Claude, it stays on
+Claude.
 
 Round 1 brief:
 
@@ -78,13 +94,13 @@ loop.
 - Approved: APPROVE on the current diff, with no blocker or should open.
 - Stuck: a dispute survives two replies, or the budget runs out. Show both
   sides in 2 or 3 lines and let the user decide.
-- No reviewer: Codex and Grok are both out. Don't wait. Put this at the top
-  of the PR description, follow the repo's rule for a review that can't run,
-  and stop:
+- No reviewer: Codex and Grok are both out and the Claude fallback can't
+  run either. Put this at the top of the PR description, follow the repo's
+  rule for a review that can't run, and stop:
 
   ```
   > [!WARNING]
-  > **Not reviewed.** Codex and Grok were both out of usage. Codex is back <time from codex-limits.sh>.
+  > **Not reviewed.** Codex, Grok and the Claude fallback were all unavailable. Codex is back <time from codex-limits.sh>.
   > Open findings: <ids, or none>.
   ```
 
@@ -94,6 +110,6 @@ Push only if the user asked. Add this line to the PR description:
 
 `Reviewed with sol-loop: <N> rounds with <model(s)>. Sol verdict: approved`
 
-If Grok reviewed, name it and say why. Report the rounds, reviewers, fixes,
+If Grok or Claude reviewed, name the model and say why. Report the rounds, reviewers, fixes,
 declined findings with reasons, diff size before and after, and whether you
 pushed.
