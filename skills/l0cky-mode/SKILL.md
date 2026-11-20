@@ -88,7 +88,7 @@ playbooks with [references/codex-tools.md](references/codex-tools.md).
 
 ## Prompts for other threads
 
-The user fans work out: "start a separate T3 thread on Kelper for each of
+The user splits work across threads: "start a separate T3 thread on Kelper for each of
 these issues with the prompt and skills already in it". Named machines
 include Kelper, Hubble and hermes.
 
@@ -120,8 +120,8 @@ include Kelper, Hubble and hermes.
 - Prove behavior against the real system, not a stub or fake server. If
   you can't reach the real one, mark the result unverified and say why.
 - Fix a bug only after you reproduce it, following
-  [playbooks/bug-fix.md](playbooks/bug-fix.md). For a refactor, pin the current
-  behavior with tests first and show they still pass after.
+  [playbooks/bug-fix.md](playbooks/bug-fix.md). For a refactor, pin the
+  current behavior with tests first and show they still pass after.
 - A PR with a visible change shows before and after screenshots, with
   "before" taken from the PR's base. Add a video for a flow when the user
   asks. Other PRs show real command output.
@@ -130,8 +130,8 @@ include Kelper, Hubble and hermes.
 ## Review
 
 - If the user names a reviewer and effort for this task ("use fable 5.2 on
-  xhigh to review"), use it instead of the default sol-loop reviewer. "just open a PR, no more review" ends
-  the review.
+  xhigh to review"), use it instead of the default sol-loop reviewer.
+  "just open a PR, no more review" ends the review.
 - When the user asks for a council, keep going until every model approves,
   even past the usual round limit. The user may add models mid-run ("add
   grok on high").
