@@ -10,7 +10,7 @@ description: >-
 
 # How
 
-Answer from the code. Read-only.
+Answer from the code. Don't change anything.
 
 1. Explore with a read-only subagent if you can. Follow one real request or
    event through the code, noting `file:line` for each step. For a
