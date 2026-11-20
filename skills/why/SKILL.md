@@ -9,7 +9,7 @@ description: >-
 
 # Why
 
-Answer from the record, not the code. Read-only.
+Answer from the history, not the code. Don't change anything.
 
 1. Dig with a read-only subagent if you can. Use `git log` and `git blame`
    to find the commit that added it and each later change, then read their
