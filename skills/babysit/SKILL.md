@@ -56,6 +56,24 @@ not approval.
   carries those commits, and tell the user.
 - A fix for a PR that already merged goes in a new PR on `main`.
 
+## Many PRs at once
+
+When several open PRs come from one task, merging one often puts the rest
+in conflict. Plan for it before the first merge:
+
+1. List the files each PR changes (`gh pr view <n> --json files`). PRs that
+   share no files can merge in any order. PRs that share files conflict.
+2. Give the user a merge order: PRs that share nothing first, then each
+   group of overlapping PRs one at a time, smallest first.
+3. After each merge, update only the open PRs that now conflict, one at a
+   time against the new `main`. Build and push each before the next. Work
+   on PRs that share no files can run in parallel, each in its own
+   worktree.
+4. Tell the user which PR to merge next and which ones will need an update
+   after it.
+5. If the same files conflict across three or more PRs, offer to stack them
+   or fold them into one PR.
+
 ## Stuck
 
 If a PR is still red after three fix rounds, or a few hours, stop. Write up
