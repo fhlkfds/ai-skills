@@ -10,17 +10,26 @@ the smallest change, and push back on scope creep.
 
 ## Reviewer
 
-1. Codex, unless `~/.claude/skills/sol-loop/codex-limits.sh` prints
-   `BLOCKED` or Codex hits a usage limit.
+1. Codex, unless `codex-limits.sh` in this skill's folder prints `BLOCKED`
+   or Codex hits a usage limit.
 2. Then Grok.
 3. If both are out, a Claude model stronger than the one that wrote most of
    the change: Fable for Opus, Opus for Sonnet or Haiku. If Fable wrote it,
    wait until Codex or Grok has usage again.
 
-Once a loop moves to a fallback, it stays there. In T3, run each round with
-`delegate_task`. Elsewhere, use the commands in `~/.claude/CLAUDE.md`, or
-`claude -p --model <fable|opus> --permission-mode plan` for Claude. A
-timeout, error or empty reply is not approval.
+Once a loop moves to a fallback, it stays there. Run each round read-only
+in the background, wait for it to exit, then read `<reply>`. Every round is
+a fresh run with the full brief and the findings so far.
+
+```
+codex exec -s read-only -m gpt-6.1-sol -c model_reasoning_effort="high" \
+  --ephemeral -C <repo> -o <reply> "<brief>"
+grok -p "<brief>" -m grok-4.7 --effort high --sandbox read-only \
+  --always-approve --no-subagents --cwd <repo> > <reply>
+claude -p "<brief>" --model <fable|opus> --permission-mode plan > <reply>
+```
+
+A timeout, error or empty reply is not approval.
 
 ## Rounds
 
