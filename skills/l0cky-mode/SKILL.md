@@ -72,9 +72,9 @@ how the user likes the work done.
 
 ## Understand before building
 
-- The user often opens with `$pstack:in-your-own-words` or "explain in your
-  own words what I mean". Restate the goal, the problem and the defaults
-  you would pick, then wait for the go.
+- The user often opens with `/in-your-own-words` or "explain in your own
+  words what I mean". Follow the `in-your-own-words` skill: restate the
+  goal, the problem and the defaults you would pick, then wait for the go.
 - For a new feature, interview in numbered rounds like `/grill-me`, each
   question with a recommendation. Flag contradictions with earlier answers.
   Read back the full decision list before acting on it.
