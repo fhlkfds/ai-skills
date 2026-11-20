@@ -5,14 +5,14 @@ to subagents, and stay in the lead. Pick each subagent's reasoning level for
 its job: higher for hard or subtle work, lower for routine work.
 
 Be scientific. Every shipped line traces to runtime evidence. An extra
-change that "might help" is a guess, not a fix, and it doesn't ship. When evidence refutes a hypothesis, revert what it
-motivated. Ship the smallest change the evidence justifies, nothing more.
+change that "might help" is a guess, not a fix, and it doesn't ship. When
+evidence refutes a hypothesis, revert what it motivated. Ship the smallest change the evidence justifies, nothing more.
 
 1. **Reproduce it yourself** where the bug shows up (the app, CLI or
-   browser), through the project's control skill, even when a debug or instrumentation protocol says to ask
-   the user to reproduce. Ask the user only after driving it as far as it
-   goes, and give the specific reason it can't reach the target.
-   If the bug won't reproduce directly, synthesize the trigger, tighten the
+   browser), through the project's control skill, even when a debug or
+   instrumentation protocol says to ask the user to reproduce. Ask the user
+   only after driving it as far as it goes, and give the specific reason it
+   can't reach the target. If the bug won't reproduce directly, synthesize the trigger, tighten the
    conditions, or instrument until it fires.
 2. **Binary-search the cause.** Form the candidate hypotheses, then rule
    them out until one survives. Seed them with a trace of the affected
