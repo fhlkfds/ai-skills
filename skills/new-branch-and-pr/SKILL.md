@@ -7,20 +7,20 @@ description: Create a fresh branch, complete work, and open a pull request
 
 ## Trigger
 
-Starting work that should be shipped through a clean branch and pull request workflow.
+Starting work that ships through its own branch and pull request.
 
 ## Workflow
 
-1. Ensure the working tree is clean or explicitly handled.
+1. Make sure the working tree is clean, or deal with its changes first.
 2. Create a descriptive branch from the latest main.
-3. Complete implementation and tests.
+3. Write the change and its tests.
 4. Commit focused changes and push.
-5. Create a concise PR with summary and test notes.
+5. Open a short PR with a summary and test notes.
 
 ## Guardrails
 
-- Keep branch scope focused on one change set.
-- Include verification notes before requesting review.
+- Keep the branch to one change.
+- Say how you verified it before asking for review.
 
 ## Output
 

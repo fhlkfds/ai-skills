@@ -18,7 +18,7 @@ provider, for example Claude Opus and GPT Sol.
 
 In T3 Code, use `orchestrator_capabilities` to resolve the models, then
 `delegate_task` to start one delegate per model in parallel. Elsewhere, use
-the harness's subagent tools. If you cannot reach both providers, or a named
+the program's subagent tools. If you cannot reach both providers, or a named
 member is unavailable, report it instead of substituting.
 
 Give each delegate the request and relevant context. For review or feedback,
@@ -30,7 +30,7 @@ Count each full review pass as one round.
 A fresh review after fixes starts a new round.
 
 If the work ends in a pull request, put the results in the PR description.
-Put this section before the model and harness line at the end:
+Put this section before the model attribution line at the end:
 
 ```markdown
 ## Council review
@@ -47,9 +47,7 @@ If a delegate gives no score, write `no score`. Do not invent one.
 If the PR is open, edit the description. Do not post a comment for this.
 If there is no PR, put the same results in the final reply only.
 
-If you agree with their recommendations, make the changes and request a fresh
-review after. Continue this process until all delegates are satisfied with the
-outcome.
+If you agree with a recommendation, make the change, then ask for a fresh
+review. Repeat until every delegate approves.
 
-Do not let repeated reviews result in scope creep. It is your job to fight to
-keep scope limited.
+Don't let repeated reviews grow the scope. Push back on findings outside it.
