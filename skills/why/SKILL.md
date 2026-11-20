@@ -16,12 +16,8 @@ Answer from the history, not the code. Don't change anything.
    PRs (`gh pr view <n> --comments`) and linked issues. If that's thin,
    check docs and nearby comments.
 2. Draw one picture: a timeline of the changes, the options they picked
-   between, or the data behind a number. Show it the best way the program
-   allows:
-   - a tool that shows HTML in the chat
-   - otherwise a self-contained HTML file in `/tmp`, opened with
-     `xdg-open` (Linux) or `open` (macOS), with its path in the reply
-   - with no display, a text diagram in the reply
+   between, or the data behind a number. Build and show it with the
+   `show-me` skill.
 3. Reply in this order:
    - **Answer:** one or two plain sentences.
    - **Picture.**
