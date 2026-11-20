@@ -41,8 +41,8 @@ often merges while you work. Then handle, in this order:
    (`gh run rerun <id> --failed`). If a job hangs, find out why instead of
    waiting on it.
 
-The `sol-loop` skill runs the review. A
-timeout, error or empty reply is not approval.
+The `sol-loop` skill runs the review. A timeout, error or empty reply is
+not approval.
 
 ## Stacks
 
